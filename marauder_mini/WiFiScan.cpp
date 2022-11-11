@@ -266,7 +266,7 @@ void WiFiScan::joinWiFi(String ssid, String password)
 void WiFiScan::initWiFi(uint8_t scan_mode) {
   // Set the channel
   if (scan_mode != WIFI_SCAN_OFF) {
-    Serial.println(F("Initializing WiFi settings"));
+    Serial.println(F("Init. WiFi settings"));
     //this->set_channel = settings_obj.loadSetting<uint8_t>("Channel");
     this->changeChannel();
   
@@ -358,7 +358,7 @@ void WiFiScan::startWiFiAttacks(uint8_t scan_mode, uint16_t color, String title_
 
 bool WiFiScan::shutdownWiFi() {
   if (this->wifi_initialized) {
-    Serial.println("Ahhh yes...promiscuity will end");
+    Serial.println("Promiscuity will end");
     esp_wifi_set_promiscuous(false);
     //WiFi.persistent(false);
     WiFi.disconnect();

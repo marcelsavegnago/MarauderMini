@@ -6,7 +6,7 @@ String Settings::getSettingsString() {
 
 bool Settings::begin() {
   if(!SPIFFS.begin(FORMAT_SPIFFS_IF_FAILED)){
-    Serial.println("Settings SPIFFS Mount Failed");
+    Serial.println("Set. SPIFFS Mount Failed");
     return false;
   }
 
@@ -27,7 +27,7 @@ bool Settings::begin() {
     }
   }
   else {
-    Serial.println("Settings file does not exist");
+    Serial.println("Set. file does not exist");
     if (this->createDefaultSettings(SPIFFS))
       return true;
     else
