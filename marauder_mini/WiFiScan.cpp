@@ -11,13 +11,18 @@ int num_eapol = 0;
 LinkedList<ssid>* ssids;
 LinkedList<AccessPoint>* access_points;
 
-extern "C" int ieee80211_raw_frame_sanity_check(int32_t arg, int32_t arg2, int32_t arg3){
-    //printf("Sanity check bypass called!: %d, %d, %d\n", arg, arg2, arg3);
-    if (arg == 31337)
-      return 1;
-    else
-      return 0;
+//extern "C" int ieee80211_raw_frame_sanity_check(int32_t arg, int32_t arg2, int32_t arg3){
+//    //printf("Sanity check bypass called!: %d, %d, %d\n", arg, arg2, arg3);
+//    if (arg == 31337)
+//      return 1;
+//    else
+//      return 0;
+//}
+
+int ieee80211_raw_frame_sanity_check(int32_t arg, int32_t arg2, int32_t arg3){
+    return 0;
 }
+
 
 class bluetoothScanAllCallback: public BLEAdvertisedDeviceCallbacks {
 
