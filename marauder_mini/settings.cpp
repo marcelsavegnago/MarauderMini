@@ -136,7 +136,7 @@ bool Settings::saveSetting<bool>(String key, bool value) {
     if (json["Settings"][i]["name"].as<String>() == key) {
       json["Settings"][i]["value"] = value;
 
-      Serial.println("Saving setting...");
+      Serial.println("Saving setting");
 
       File settingsFile = SPIFFS.open("/settings.json", FILE_WRITE);
 

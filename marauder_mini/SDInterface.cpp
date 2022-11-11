@@ -66,7 +66,7 @@ bool SDInterface::initSD() {
 
     // Check for SCRIPTS folder
     if (!SD.exists("/SCRIPTS")) {
-      Serial.println("/SCRIPTS does not exist. Creating...");
+      Serial.println("/SCRIPTS does not exist. Creating");
 
       SD.mkdir("/SCRIPTS");
       Serial.println("/SCRIPTS created");
@@ -78,7 +78,7 @@ bool SDInterface::initSD() {
 
 void SDInterface::addPacket(uint8_t* buf, uint32_t len) {
   if ((this->supported) && (this->do_save)) {
-    //Serial.println("Adding packet to buffer...");
+    //Serial.println("Adding packet to buffer");
     buffer_obj.addPacket(buf, len);
   }
 }
@@ -96,7 +96,7 @@ void SDInterface::runUpdate() {
   display_obj.tft.setTextSize(1);
   display_obj.tft.setTextColor(TFT_WHITE);
 
-  display_obj.tft.println(F("Opening /update.bin..."));
+  display_obj.tft.println(F("Opening /update.bin"));
   File updateBin = SD.open("/update.bin");
   if (updateBin) {
     if(updateBin.isDirectory()){
@@ -111,7 +111,7 @@ void SDInterface::runUpdate() {
     size_t updateSize = updateBin.size();
 
     if (updateSize > 0) {
-      display_obj.tft.println(F("Starting SD Update..."));
+      display_obj.tft.println(F("Starting SD Update"));
       Serial.println(F("Try to start update"));
       this->performUpdate(updateBin, updateSize);
     }
@@ -126,8 +126,8 @@ void SDInterface::runUpdate() {
     updateBin.close();
     
       // whe finished remove the binary from sd card to indicate end of the process
-    display_obj.tft.println(F("rebooting..."));
-    Serial.println(F("rebooting..."));
+    display_obj.tft.println(F("rebooting"));
+    Serial.println(F("rebooting"));
     //SD.remove("/update.bin");      
     delay(1000);
     ESP.restart();
@@ -143,7 +143,7 @@ void SDInterface::runUpdate() {
 void SDInterface::performUpdate(Stream &updateSource, size_t updateSize) {
   if (Update.begin(updateSize)) {   
     display_obj.tft.println("File size: " + String(updateSize));
-    display_obj.tft.println(F("Writing file to partition..."));
+    display_obj.tft.println(F("Writing file to partition"));
     size_t written = Update.writeStream(updateSource);
     if (written == updateSize) {
       display_obj.tft.println("Written: " + String(written) + " successfully");
@@ -192,7 +192,7 @@ bool SDInterface::checkDetectPin() {
 
 void SDInterface::main() {
   if ((this->supported) && (this->do_save)) {
-    //Serial.println("Saving packet...");
+    //Serial.println("Saving packet");
     buffer_obj.forceSave(&SD);
   }
   else if (!this->supported) {

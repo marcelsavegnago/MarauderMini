@@ -174,7 +174,7 @@ void settings_list_cb(lv_obj_t * btn, lv_event_t event) {
   
   if (event == LV_EVENT_CLICKED) {
     if (btn_text == "Exit") {
-      Serial.println("Exiting...");
+      Serial.println("Exiting");
       lv_obj_del_async(lv_obj_get_parent(lv_obj_get_parent(btn)));
 
       printf("LV_EVENT_CANCEL\n");
@@ -185,7 +185,7 @@ void settings_list_cb(lv_obj_t * btn, lv_event_t event) {
     }
     else {
       // Build base obj to host buttons
-      Serial.println("Creating base object...");
+      Serial.println("Creating base object");
       lv_obj_t * obj;
       obj = lv_obj_create(lv_scr_act(), NULL);
       lv_obj_set_size(obj, LV_HOR_RES, LV_VER_RES);
@@ -352,7 +352,7 @@ void ap_list_cb(lv_obj_t * btn, lv_event_t event) {
       //lv_list_focus_btn(lv_obj_get_parent(lv_obj_get_parent(btn)), btn);
     }
     else {
-      Serial.println("Exiting...");
+      Serial.println("Exiting");
       lv_obj_del_async(lv_obj_get_parent(lv_obj_get_parent(btn)));
 
       for (int i = 0; i < access_points->size(); i++) {
@@ -860,7 +860,7 @@ void MenuFunctions::main(uint32_t currentTime)
         (wifi_scan_obj.currentScanMode == BT_SCAN_ALL) ||
         (wifi_scan_obj.currentScanMode == BT_SCAN_SKIMMERS))
     {
-      Serial.println("Stopping scan...");
+      Serial.println("Stopping scan");
       wifi_scan_obj.StartScan(WIFI_SCAN_OFF);
 
       // If we don't do this, the text and button coordinates will be off
@@ -1136,7 +1136,7 @@ void MenuFunctions::orientDisplay()
 }
 
 void MenuFunctions::runBoolSetting(String key) {
-  Serial.println("Building bool setting screen...");
+  Serial.println("Building bool setting screen");
   display_obj.tftDrawRedOnOffButton();
   //display_obj.tftDrawGreenOnOffButton();
 }
@@ -1669,7 +1669,7 @@ void MenuFunctions::addNodes(Menu * menu, String name, uint16_t color, Menu * ch
 
 void MenuFunctions::buildButtons(Menu * menu)
 {
-  Serial.println("Bulding buttons...");
+  Serial.println("Bulding buttons");
   if (menu->list != NULL)
   {
     //for (int i = 0; i < sizeof(key); i++)
@@ -1698,7 +1698,7 @@ void MenuFunctions::buildButtons(Menu * menu)
 
 void MenuFunctions::displayCurrentMenu()
 {
-  Serial.println(F("Displaying current menu..."));
+  Serial.println(F("Displaying current menu"));
   display_obj.clearScreen();
   display_obj.tft.setTextColor(TFT_LIGHTGREY, TFT_DARKGREY);
   this->drawStatusBar();

@@ -10,13 +10,13 @@ void EspInterface::begin() {
 
   digitalWrite(ESP_ZERO, HIGH);
 
-  Serial.println("Checking for ESP8266...");
+  Serial.println("Checking for ESP8266");
 
   MySerial.begin(BAUD, SERIAL_8N1, 27, 26);
 
   delay(100);
 
-  display_obj.tft.println("Checking for ESP8266...");
+  display_obj.tft.println("Checking for ESP8266");
 
   this->bootRunMode();
 
@@ -64,13 +64,13 @@ void EspInterface::RunUpdate() {
   display_obj.tft.setTextSize(1);
   display_obj.tft.setTextColor(TFT_GREEN);
 
-  display_obj.tft.println("Waiting for serial data...");
+  display_obj.tft.println("Waiting for serial data");
 
   display_obj.tft.setTextColor(TFT_WHITE);
 }
 
 void EspInterface::bootProgramMode() {
-  Serial.println("[!] Setting ESP12 in program mode...");
+  Serial.println("[!] Setting ESP12 in program mode");
   digitalWrite(ESP_ZERO, LOW);
   delay(100);
   digitalWrite(ESP_RST, LOW);
@@ -86,7 +86,7 @@ void EspInterface::bootProgramMode() {
 void EspInterface::bootRunMode() {
   Serial.end();
   Serial.begin(115200);
-  Serial.println("[!] Setting ESP12 in run mode...");
+  Serial.println("[!] Setting ESP12 in run mode");
   digitalWrite(ESP_ZERO, HIGH);
   delay(100);
   digitalWrite(ESP_RST, LOW);

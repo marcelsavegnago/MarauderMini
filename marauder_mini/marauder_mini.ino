@@ -181,7 +181,7 @@ void setup()
 
   display_obj.tft.println(F("Initialized LED Interface"));
 
-  //display_obj.tft.println(F("Starting..."));
+  //display_obj.tft.println(F("Starting"));
 
   delay(500);
 
@@ -204,7 +204,7 @@ void setup()
   
   //a32u4_obj.begin(); // This goes last to make sure nothing is messed up when reading serial
 
-  display_obj.tft.println(F("Starting..."));
+  display_obj.tft.println(F("Starting"));
 
   display_obj.tft.setTextColor(TFT_WHITE, TFT_BLACK);
 

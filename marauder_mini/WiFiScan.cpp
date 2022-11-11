@@ -217,7 +217,7 @@ void WiFiScan::joinWiFi(String ssid, String password)
     return;
   }
   else if (WiFi.status() == WL_CONNECTED) {
-    Serial.println("Already connected. Disconnecting...");
+    Serial.println("Already connected. Disconnecting");
     WiFi.disconnect();
   }
 
@@ -266,7 +266,7 @@ void WiFiScan::joinWiFi(String ssid, String password)
 void WiFiScan::initWiFi(uint8_t scan_mode) {
   // Set the channel
   if (scan_mode != WIFI_SCAN_OFF) {
-    Serial.println(F("Initializing WiFi settings..."));
+    Serial.println(F("Initializing WiFi settings"));
     //this->set_channel = settings_obj.loadSetting<uint8_t>("Channel");
     this->changeChannel();
   
@@ -372,26 +372,26 @@ bool WiFiScan::shutdownWiFi() {
     return true;
   }
   else {
-    Serial.println(F("WiFi is not currently running"));
+    Serial.println(F("WiFi is not  running"));
     return false;
   }
 }
 
 bool WiFiScan::shutdownBLE() {
   if (this->ble_initialized) {
-    Serial.println("Stopping BLE scan...");
+    Serial.println("Stopping BLE scan");
     pBLEScan->stop();
     Serial.println("BLE Scan Stopped");
     
     
-    Serial.println("Clearing BLE Results...");
+    Serial.println("Clearing BLE Results");
     pBLEScan->clearResults();
-    Serial.println("Deinitializing BT Controller...");
+    Serial.println("Deinitializing BT Controller");
     BLEDevice::deinit();
-    //Serial.println("Disable and Deinit BLE...");
+    //Serial.println("Disable and Deinit BLE");
     //esp_bt_controller_disable();
     //esp_bt_controller_deinit();
-    //Serial.println("Releasing BLE Memory...");
+    //Serial.println("Releasing BLE Memory");
     //esp_bt_controller_mem_release(ESP_BT_MODE_BLE);
     //Serial.println("BT Controller Status: " + (String)esp_bt_controller_get_status());
   
@@ -399,7 +399,7 @@ bool WiFiScan::shutdownBLE() {
     return true;
   }
   else {
-    Serial.println(F("BLE is not currently running"));
+    Serial.println(F("BLE is not  running"));
     return false;
   }
 }
@@ -431,19 +431,19 @@ void WiFiScan::StopScan(uint8_t scan_mode)
   else if ((currentScanMode == BT_SCAN_ALL) ||
   (currentScanMode == BT_SCAN_SKIMMERS))
   {
-    //Serial.println("Stopping BLE scan...");
+    //Serial.println("Stopping BLE scan");
     //pBLEScan->stop();
     //Serial.println("BLE Scan Stopped");
     
     
-    //Serial.println("Clearing BLE Results...");
+    //Serial.println("Clearing BLE Results");
     //pBLEScan->clearResults();
-    /*Serial.println("Deinitializing BT Controller...");
+    /*Serial.println("Deinitializing BT Controller");
     BLEDevice::deinit();
-    //Serial.println("Disable and Deinit BLE...");
+    //Serial.println("Disable and Deinit BLE");
     //esp_bt_controller_disable();
     //esp_bt_controller_deinit();
-    //Serial.println("Releasing BLE Memory...");
+    //Serial.println("Releasing BLE Memory");
     //esp_bt_controller_mem_release(ESP_BT_MODE_BLE);
     //Serial.println("BT Controller Status: " + (String)esp_bt_controller_get_status());
     */
@@ -568,7 +568,7 @@ void WiFiScan::RunClearAPs() {
   display_obj.tft.setTextSize(1);
   display_obj.tft.setTextColor(TFT_CYAN);
 
-  display_obj.tft.println(F("Clearing APs..."));
+  display_obj.tft.println(F("Clearing APs"));
   display_obj.tft.println("APs Cleared: " + (String)this->clearAPs());
 }
 
@@ -579,7 +579,7 @@ void WiFiScan::RunClearSSIDs() {
   display_obj.tft.setTextSize(1);
   display_obj.tft.setTextColor(TFT_CYAN);
 
-  display_obj.tft.println(F("Clearing SSIDs..."));
+  display_obj.tft.println(F("Clearing SSIDs"));
   display_obj.tft.println("SSIDs Cleared: " + (String)this->clearSSIDs());
 }
 
@@ -590,7 +590,7 @@ void WiFiScan::RunGenerateSSIDs() {
   display_obj.tft.setTextSize(1);
   display_obj.tft.setTextColor(TFT_CYAN);
 
-  display_obj.tft.println(F("Generating SSIDs..."));
+  display_obj.tft.println(F("Generating SSIDs"));
 
   display_obj.tft.println("SSIDs Generated: " + (String)this->generateSSIDs());
   display_obj.tft.println("    Total SSIDs: " + (String)ssids->size());
@@ -603,7 +603,7 @@ void WiFiScan::RunShutdownWiFi() {
   display_obj.tft.setTextSize(1);
   display_obj.tft.setTextColor(TFT_CYAN);
 
-  display_obj.tft.print(F("Shutting down WiFi..."));
+  display_obj.tft.print(F("Shutting down WiFi"));
 
   if (this->wifi_initialized) {
     this->shutdownWiFi();
@@ -613,7 +613,7 @@ void WiFiScan::RunShutdownWiFi() {
   else {
     display_obj.tft.setTextColor(TFT_RED);
     display_obj.tft.println(F("FAIL"));
-    display_obj.tft.println(F("WiFi not currently initialized"));
+    display_obj.tft.println(F("WiFi not  initialized"));
   }
 }
 
@@ -624,7 +624,7 @@ void WiFiScan::RunShutdownBLE() {
   display_obj.tft.setTextSize(1);
   display_obj.tft.setTextColor(TFT_CYAN);
 
-  display_obj.tft.print(F("Shutting down BLE..."));
+  display_obj.tft.print(F("Shutting down BLE"));
 
   if (this->ble_initialized) {
     this->shutdownBLE();
@@ -634,7 +634,7 @@ void WiFiScan::RunShutdownBLE() {
   else {
     display_obj.tft.setTextColor(TFT_RED);
     display_obj.tft.println(F("FAIL"));
-    display_obj.tft.println(F("BLE not currently initialized"));
+    display_obj.tft.println(F("BLE not  initialized"));
   }
 }
 
@@ -742,7 +742,7 @@ void WiFiScan::RunPacketMonitor(uint8_t scan_mode, uint16_t color)
   display_obj.tftDrawChannelScaleButtons(set_channel);
   display_obj.tftDrawExitScaleButtons();
 
-  Serial.println("Running packet scan...");
+  Serial.println("Running packet scan");
   //wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
   esp_wifi_init(&cfg);
   esp_wifi_set_storage(WIFI_STORAGE_RAM);
@@ -797,7 +797,7 @@ void WiFiScan::RunEapolScan(uint8_t scan_mode, uint16_t color)
 /*
 void WiFiScan::RunRickRoll(uint8_t scan_mode, uint16_t color)
 {
-  //Serial.println("Rick Roll...");
+  //Serial.println("Rick Roll");
   display_obj.TOP_FIXED_AREA_2 = 48;
   display_obj.tteBar = true;
   display_obj.print_delay_1 = 15;
@@ -954,7 +954,7 @@ void WiFiScan::RunDeauthFlood(uint8_t scan_mode, uint16_t color) {
 /*
 void WiFiScan::RunBeaconSpam(uint8_t scan_mode, uint16_t color)
 {
-  //Serial.println("Beacon Spam...");
+  //Serial.println("Beacon Spam");
   display_obj.TOP_FIXED_AREA_2 = 48;
   display_obj.tteBar = true;
   display_obj.print_delay_1 = 15;
@@ -1161,7 +1161,7 @@ void WiFiScan::RunBluetoothScan(uint8_t scan_mode, uint16_t color)
     display_obj.tft.setTextColor(TFT_BLACK, color);
     display_obj.tft.fillRect(0,16,240,16, color);
     display_obj.tft.drawCentreString(" Detect Card Skimmers ",120,16,2);
-    display_obj.twoPartDisplay("Scanning for\nBluetooth-enabled skimmers\nHC-03, HC-05, and HC-06...");
+    display_obj.twoPartDisplay("Scanning for\nBluetooth-enabled skimmers\nHC-03, HC-05, and HC-06");
     display_obj.tft.setTextColor(TFT_BLACK, TFT_DARKGREY);
     display_obj.setupScrollArea(display_obj.TOP_FIXED_AREA_2, BOT_FIXED_AREA);
     pBLEScan->setAdvertisedDeviceCallbacks(new bluetoothScanSkimmersCallback(), false);
@@ -1916,7 +1916,7 @@ void WiFiScan::broadcastRandomSSID(uint32_t currentTime) {
   for(int i = 0; i < 12; i++) 
     packet[38 + 6 + i] = postSSID[i];
 
-  //Serial.println("About to send packets...");
+  //Serial.println("About to send packets");
 
   esp_wifi_80211_tx(WIFI_IF_AP, packet, sizeof(packet), false);
   esp_wifi_80211_tx(WIFI_IF_AP, packet, sizeof(packet), false);
@@ -2290,7 +2290,7 @@ void WiFiScan::eapolMonitorMain(uint32_t currentTime)
           }
         }
         else if (b == 6) {
-          Serial.println("Exiting packet monitor...");
+          Serial.println("Exiting packet monitor");
           this->StartScan(WIFI_SCAN_OFF);
           //display_obj.tft.init();
           this->orient_display = true;
@@ -2306,7 +2306,7 @@ void WiFiScan::eapolMonitorMain(uint32_t currentTime)
       initTime = millis();
       y_pos_x = ((-num_eapol * (y_scale * 3)) + (HEIGHT_1 - 2)); // GREEN
       if (y_pos_x >= HEIGHT_1) {
-        Serial.println("Max EAPOL number reached. Adjusting...");
+        Serial.println("Max EAPOL number reached. Adjusting");
         num_eapol = 0;
       }
       //y_pos_y = ((-num_deauth * (y_scale * 3)) + (HEIGHT_1 - 2)); // RED
@@ -2518,7 +2518,7 @@ void WiFiScan::packetMonitorMain(uint32_t currentTime)
           }
         }
         else if (b == 6) {
-          Serial.println("Exiting packet monitor...");
+          Serial.println("Exiting packet monitor");
           this->StartScan(WIFI_SCAN_OFF);
           //display_obj.tft.init();
           this->orient_display = true;

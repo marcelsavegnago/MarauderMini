@@ -35,7 +35,7 @@ class Buffer {
 
     bool writing = false; // acceppting writes to buffer
     bool useA = true; // writing to bufA or bufB
-    bool saving = false; // currently saving onto the SD card
+    bool saving = false; //  saving onto the SD card
 
     String fileName = "/0.pcap";
     File file;

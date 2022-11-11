@@ -53,12 +53,12 @@ void Web::setupOTAupdate()
 
   Serial.println(wifi_scan_obj.freeRAM());
   display_obj.tft.print("Configuring update server...\n\n");  
-  Serial.println("Configuring update server...");
+  Serial.println("Configuring update server");
 
   display_obj.tft.setTextColor(TFT_YELLOW);
   
   // Start WiFi AP
-  Serial.println("Initializing WiFi...");
+  Serial.println("Initializing WiFi");
   //wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
   esp_wifi_init(&wifi_scan_obj.cfg);
   //esp_wifi_set_storage(WIFI_STORAGE_RAM);
@@ -68,14 +68,14 @@ void Web::setupOTAupdate()
   esp_wifi_start();
   Serial.println(wifi_scan_obj.freeRAM());
 
-  Serial.println("Starting softAP...");
+  Serial.println("Starting softAP");
   esp_wifi_set_mac(WIFI_IF_AP, &newMACAddress[0]);
   WiFi.softAP(ssid, password);
   Serial.println("");
 
   Serial.println(wifi_scan_obj.freeRAM());
 
-  Serial.println("Displaying settings to TFT...");
+  Serial.println("Displaying settings to TFT");
   display_obj.tft.print("SSID: ");
   display_obj.tft.println(ssid);
   display_obj.tft.print("IP address: ");
@@ -96,7 +96,7 @@ void Web::setupOTAupdate()
   */
 
   // return javascript jquery
-  Serial.println("Setting server behavior...");
+  Serial.println("Setting server behavior");
   Serial.println(wifi_scan_obj.freeRAM());
   server.on("/jquery.min.js", HTTP_GET, onJavaScript);
   /*return index page which is stored in serverIndex */
@@ -165,7 +165,7 @@ void Web::setupOTAupdate()
   
   Serial.println("Finished setting server behavior");
   Serial.println(wifi_scan_obj.freeRAM());
-  Serial.println("Starting server...");
+  Serial.println("Starting server");
   server.begin();
 
   display_obj.tft.setTextColor(TFT_GREEN);
@@ -175,7 +175,7 @@ void Web::setupOTAupdate()
 }
 
 void Web::shutdownServer() {
-  Serial.println("Closing Update Server...");
+  Serial.println("Closing Update Server");
   server.stop();
   WiFi.mode(WIFI_OFF);
   esp_wifi_set_mode(WIFI_MODE_NULL);
